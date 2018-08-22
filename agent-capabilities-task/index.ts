@@ -37,7 +37,7 @@ async function run() {
         );
 
         let definitionResponse: any = await rpn(definitionOptions);
-        task.debug(JSON.stringify(definitionResponse));
+        task.debug(JSON.stringify(definitionResponse.queue));
 
         task.setResult(task.TaskResult.Succeeded, 'Succeeded');
     }
