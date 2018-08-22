@@ -1,19 +1,5 @@
 import task = require('vsts-task-lib/task');
-import * as rc from 'typed-rest-client/RestClient';
-
-interface TaskAgentPoolReference {
-    id: number;
-    isHosted: boolean;
-    name: string;
-}
-
-interface AgentPoolQueue {
-    pool: TaskAgentPoolReference;
-}
-
-interface BuildDefinition {
-    queue: AgentPoolQueue;
-}
+import * as rpn from 'request-promise-native';
 
 function getRequestOptions(options: any): any {
     var baseOptions = {
@@ -44,13 +30,14 @@ async function run() {
         let definitionUri = `${baseUri}${projectId}/_apis/build/definitions/${definitionId}`;
         task.debug(`definitionUri=${definitionUri}`);
 
-        let rest: rc.RestClient = new rc.RestClient('agent-capabilities');
+        var definitionOptions = getRequestOptions(
+            {
+                uri: definitionUri
+            }
+        );
 
-        var definitionOptions = getRequestOptions({});
-
-        let definitionResponse : rc.IRestResponse<BuildDefinition> = await rest.get<BuildDefinition>(definitionUri, definitionOptions);
-
-        task.debug(definitionResponse.statusCode.toString());
+        let definitionResponse: any = await rpn(definitionOptions);
+        task.debug(JSON.stringify(definitionResponse));
 
         task.setResult(task.TaskResult.Succeeded, 'Succeeded');
     }

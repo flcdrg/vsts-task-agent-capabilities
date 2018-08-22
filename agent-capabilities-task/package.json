@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.5",
     "typed-rest-client": "^1.0.7",
     "vss-web-extension-sdk": "^5.134.0",
     "vsts-task-lib": "^2.6.0"
