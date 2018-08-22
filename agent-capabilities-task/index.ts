@@ -7,7 +7,7 @@ async function run() {
             throw new Error('\'Allow scripts to access OAuth token\' must be enabled.');
         }
 
-        task.setResult(task.TaskResult.Succeeded, 'Completed successfully');
+        task.setResult(task.TaskResult.Succeeded, 'Succeeded');
     }
     catch (err) {
         task.setResult(task.TaskResult.Failed, err.message);
