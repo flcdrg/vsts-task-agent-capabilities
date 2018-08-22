@@ -4,7 +4,7 @@
     "friendlyName": "Agent Capabilities",
     "description": "Exposes agent capabilities as variabless",
     "helpMarkDown": "Having Problems? Please [create an issue on our Github](https://github.com/Fernfrost/vsts-task-agent-capabilities/issues) and we will try to help you.",
-    "category": "Build",
+    "category": "Utility",
     "author": "Fernfrost",
     "version": {
         "Major": 0,
