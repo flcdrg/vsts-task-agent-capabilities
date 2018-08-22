@@ -1,0 +1,54 @@
+{
+    "manifestVersion": 1,
+    "id": "agent-capabilities",
+    "name": "Agent Capabilities",
+    "version": "0.0.1",
+    "publisher": "fernfrost",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services.Cloud"
+        }
+    ],
+    "description": "Exposes agent capabilities as variables",
+    "categories": [
+        "Build and release"
+    ],
+    "tags": [
+        "Build task", "Build", "Continuous Integration", "Agent", "Capabilities", "Variables"
+    ],
+    "icons": {
+        "default": "icon-128.png",
+        "large": "icon-512.png"
+    },
+    "content": {
+        "details": {
+            "path": "README.md"
+        }
+    },
+    "links": {
+        "support": {
+            "uri": "https://github.com/Fernfrost/vsts-task-agent-capabilities/issues"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "uri": "https://github.com/Fernfrost/vsts-task-agent-capabilities"
+    },
+    "files": [
+        {
+            "path": "agent-capabilities-task"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "agent-capabilities-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "agent-capabilities-task"
+            }
+        }
+    ]
+}

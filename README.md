@@ -1,1 +1,1 @@
-# vsts-task-agent-capabilities
+# Agent Capabilities

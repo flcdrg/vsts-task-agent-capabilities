@@ -1,0 +1,21 @@
+{
+    "id": "37da5e59-767b-4388-976c-d0a5477f3ba1",
+    "name": "agent-capabilities",
+    "friendlyName": "Agent Capabilities",
+    "description": "Exposes agent capabilities as variabless",
+    "helpMarkDown": "Having Problems? Please [create an issue on our Github](https://github.com/Fernfrost/vsts-task-agent-capabilities/issues) and we will try to help you.",
+    "category": "Build",
+    "author": "Fernfrost",
+    "version": {
+        "Major": 0,
+        "Minor": 0,
+        "Patch": 1
+    },
+    "instanceNameFormat": "Agent Capabilities",
+    "execution": {
+        "Node": {
+            "target": "index.js",
+            "argumentFormat": ""
+        }
+    }
+}
