@@ -67,7 +67,11 @@ async function run() {
 
         for (let key of keys){
             task.debug(key + ': ' + agent.systemCapabilities[key]);
+
+            task.setVariable('agentCapabilities.' + key, agent.systemCapabilities[key]);
         }
+
+        task.debug(JSON.stringify(task.getVariables()));
 
         task.setResult(task.TaskResult.Succeeded, 'Succeeded');
     }
