@@ -49,8 +49,7 @@ async function run() {
 
 
         // ideally from config
-        //let token = task.getVariable('AgentCapabilitiesAccessToken');
-        let token = task.getVariable('System.AccessToken');
+        let token = task.getVariable('AgentCapabilitiesAccessToken');
 
         let authHandler = vsts.getPersonalAccessTokenHandler(token);
         let connection = new vsts.WebApi(collectionUri, authHandler);
@@ -58,8 +57,16 @@ async function run() {
         let api = await connection.getBuildApi();
         let build = await api.getBuild(buildId, projectId);
 
-        task.debug(build.queue.name);
-        task.debug(build.queue.pool.name);
+        let poolId = build.queue.pool.id;
+
+        let agentId = Number(task.getVariable('agent.id'));
+
+        let poolApi = await connection.getTaskAgentApi();
+        let agent = await poolApi.getAgent(poolId, agentId, true);
+
+        task.debug(JSON.stringify(agent.userCapabilities));
+        task.debug(JSON.stringify(agent.systemCapabilities));
+
 
         task.setResult(task.TaskResult.Succeeded, 'Succeeded');
     }
