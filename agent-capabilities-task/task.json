@@ -2,8 +2,8 @@
     "id": "37da5e59-767b-4388-976c-d0a5477f3ba1",
     "name": "agent-capabilities",
     "friendlyName": "Agent Capabilities",
-    "description": "Exposes agent capabilities as variabless",
-    "helpMarkDown": "Requires **Allow scripts to access OAuth token** to be **enabled**.<br/><br>Having Problems? Please [create an issue on our Github](https://github.com/Fernfrost/vsts-task-agent-capabilities/issues) and we will try to help you.",
+    "description": "Exposes agent capabilities as variables in your pipeline",
+    "helpMarkDown": "Requires a personal access token.<br/><br>Having Problems? Please [create an issue on our Github](https://github.com/Fernfrost/vsts-task-agent-capabilities/issues) and we will try to help you.",
     "category": "Utility",
     "author": "Fernfrost",
     "inputs": [
@@ -13,7 +13,7 @@
             "label": "Personal access token",
             "defaultValue": "$(AgentCapabilitiesAccessToken)",
             "required": true,
-            "helpMarkDown": "Help text"
+            "helpMarkDown": "For security, we recommend creating a secret variable for your personal access token, eg. <code>$(AgentCapabilitiesAccessToken)</code> and referense it here."
         }
     ],
     "version": {

@@ -9,12 +9,12 @@
             "id": "Microsoft.VisualStudio.Services.Cloud"
         }
     ],
-    "description": "Exposes agent capabilities as variables",
+    "description": "Exposes agent capabilities as variables in your pipeline",
     "categories": [
         "Build and release"
     ],
     "tags": [
-        "Build task", "Build", "Continuous Integration", "Agent", "Capabilities", "Variables"
+        "Build task", "Build", "Continuous Integration", "Pipeline", "Agent", "Capabilities", "Variables"
     ],
     "icons": {
         "default": "icon-128.png",
@@ -37,6 +37,10 @@
     "files": [
         {
             "path": "agent-capabilities-task"
+        },
+        {
+            "path": "images",
+            "addressable": true
         }
     ],
     "contributions": [

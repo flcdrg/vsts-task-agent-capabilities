@@ -1,9 +1,5 @@
 import task = require('vsts-task-lib/task');
 import * as vsts from 'vso-node-api';
-import { IBuildApi } from 'vso-node-api/BuildApi';
-import { Build } from 'vso-node-api/interfaces/BuildInterfaces';
-import { ITaskAgentApi } from 'vso-node-api/TaskAgentApi';
-import { TaskAgent } from 'vso-node-api/interfaces/TaskAgentInterfaces';
 
 async function run() {
     try {
