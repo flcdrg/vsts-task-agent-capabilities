@@ -63,8 +63,9 @@ async function run() {
 
         let poolApi = await connection.getTaskAgentApi();
         let agent = await poolApi.getAgent(poolId, agentId, true);
+        let keys = Object.keys(agent.systemCapabilities);
 
-        task.debug(JSON.stringify(agent.userCapabilities));
+        task.debug(JSON.stringify(keys));
         task.debug(JSON.stringify(agent.systemCapabilities));
 
 
