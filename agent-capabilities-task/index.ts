@@ -32,7 +32,10 @@ async function run() {
         let keys = Object.keys(systemCapabilities);
 
         for (let key of keys) {
-            task.setVariable('agentCapabilities.' + key, systemCapabilities[key]);
+            let formattedKey = `agentCapabilities.${key}`;
+            let value = systemCapabilities[key];
+            task.setVariable(formattedKey, value);
+            console.log(`${formattedKey}=${value}`);
         }
 
         task.setResult(task.TaskResult.Succeeded, 'Succeeded');
