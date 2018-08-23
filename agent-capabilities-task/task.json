@@ -6,6 +6,16 @@
     "helpMarkDown": "Requires **Allow scripts to access OAuth token** to be **enabled**.<br/><br>Having Problems? Please [create an issue on our Github](https://github.com/Fernfrost/vsts-task-agent-capabilities/issues) and we will try to help you.",
     "category": "Utility",
     "author": "Fernfrost",
+    "inputs": [
+        {
+            "name": "personalAccessToken",
+            "type": "string",
+            "label": "Personal access token",
+            "defaultValue": "$(AgentCapabilitiesAccessToken",
+            "required": true,
+            "helpMarkDown": "Help text"
+        }
+    ],
     "version": {
         "Major": 0,
         "Minor": 0,
