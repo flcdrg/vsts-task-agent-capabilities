@@ -4,7 +4,8 @@ import * as rpn from 'request-promise-native';
 function getRequestOptions(options: any): any {
     var baseOptions = {
         auth: {
-            bearer: task.getVariable('System.AccessToken')
+            //bearer: task.getVariable('System.AccessToken')
+            bearer: task.getVariable('AgentCapabilitiesAccessToken')
         },
         json: true,
         qs: {},
