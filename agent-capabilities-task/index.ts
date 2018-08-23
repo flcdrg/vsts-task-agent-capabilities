@@ -65,9 +65,9 @@ async function run() {
         let agent = await poolApi.getAgent(poolId, agentId, true);
         let keys = Object.keys(agent.systemCapabilities);
 
-        task.debug(JSON.stringify(keys));
-        task.debug(JSON.stringify(agent.systemCapabilities));
-
+        for (let key of keys){
+            task.debug(key + ': ' + agent.systemCapabilities[key]);
+        }
 
         task.setResult(task.TaskResult.Succeeded, 'Succeeded');
     }
