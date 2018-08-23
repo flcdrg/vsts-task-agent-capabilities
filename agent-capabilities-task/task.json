@@ -11,7 +11,7 @@
             "name": "personalAccessToken",
             "type": "string",
             "label": "Personal access token",
-            "defaultValue": "$(AgentCapabilitiesAccessToken",
+            "defaultValue": "$(AgentCapabilitiesAccessToken)",
             "required": true,
             "helpMarkDown": "Help text"
         }
