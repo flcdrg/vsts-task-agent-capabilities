@@ -1,5 +1,5 @@
 # Agent Capabilities
-Exposes agent capabilities as variables in your pipeline.
+Exposes agent capabilities as variables in your pipeline. Use them just like any other variable in subsequent tasks.
 
 ## Usage
 Add a new **Agent Capabilities** task from the **Utility** category...
