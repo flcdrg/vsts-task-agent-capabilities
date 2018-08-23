@@ -26,13 +26,16 @@ async function run() {
             systemCapabilities = agent.systemCapabilities;
         }
         catch(err){
-            throw new Error('Invalid personal access token');
+            throw new Error('Invalid personal access token. Make sure the token is valid and active.');
         }
 
         let keys = Object.keys(systemCapabilities);
 
+        console.log('Agent capability variables and values. Format: variable=value');
+        console.log();
+
         for (let key of keys) {
-            let formattedKey = `agentCapabilities.${key}`;
+            let formattedKey = `AgentCapability.${key}`;
             let value = systemCapabilities[key];
             task.setVariable(formattedKey, value);
             console.log(`${formattedKey}=${value}`);
