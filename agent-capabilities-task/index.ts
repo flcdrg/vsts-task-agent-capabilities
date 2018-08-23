@@ -17,52 +17,27 @@ async function run() {
 
         let projectId = task.getVariable('system.teamProjectId');
         let buildId: number = Number(task.getVariable('build.buildId'));
-
-        let buildApi: IBuildApi;
-        try{
-            buildApi = await connection.getBuildApi();
-        }
-        catch(err){
-            throw new Error('No build api');
-        }
-
-        let build: Build;
-        try {
-            build = await buildApi.getBuild(buildId, projectId);
-        }
-        catch(err){
-            throw new Error('No build');
-        }
-
-        let poolId = build.queue.pool.id;
-
         let agentId = Number(task.getVariable('agent.id'));
 
-        let agentApi: ITaskAgentApi;
+        let systemCapabilities;
+
         try{
-            agentApi = await connection.getTaskAgentApi();
+            let buildApi = await connection.getBuildApi();
+            let build = await buildApi.getBuild(buildId, projectId);
+            let poolId = build.queue.pool.id;
+            let agentApi = await connection.getTaskAgentApi();
+            let agent = await agentApi.getAgent(poolId, agentId, true);
+            systemCapabilities = agent.systemCapabilities;
         }
         catch(err){
-            throw new Error('No agent api');
+            throw new Error('Invalid personal access token');
         }
 
-        let agent: TaskAgent;
-        try{
-            agent = await agentApi.getAgent(poolId, agentId, true);
-        }
-        catch(err){
-            throw new Error('No agent');
-        }
-        
-        let keys = Object.keys(agent.systemCapabilities);
+        let keys = Object.keys(systemCapabilities);
 
         for (let key of keys) {
-            task.debug(key + ': ' + agent.systemCapabilities[key]);
-
-            task.setVariable('agentCapabilities.' + key, agent.systemCapabilities[key]);
+            task.setVariable('agentCapabilities.' + key, systemCapabilities[key]);
         }
-
-        task.debug(JSON.stringify(task.getVariables()));
 
         task.setResult(task.TaskResult.Succeeded, 'Succeeded');
     }
