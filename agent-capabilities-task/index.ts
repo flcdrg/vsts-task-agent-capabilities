@@ -1,5 +1,9 @@
 import task = require('vsts-task-lib/task');
 import * as vsts from 'vso-node-api';
+import { IBuildApi } from 'vso-node-api/BuildApi';
+import { Build } from 'vso-node-api/interfaces/BuildInterfaces';
+import { ITaskAgentApi } from 'vso-node-api/TaskAgentApi';
+import { TaskAgent } from 'vso-node-api/interfaces/TaskAgentInterfaces';
 
 async function run() {
     try {
@@ -9,29 +13,47 @@ async function run() {
 
         let authHandler = vsts.getPersonalAccessTokenHandler(token);
 
-        let connection: vsts.WebApi;
-        try {
-            connection = new vsts.WebApi(collectionUri, authHandler);
-        }
-        catch (err) {
-            throw new Error('Invalid Personal access token');
-        }
-
-
+        let connection = new vsts.WebApi(collectionUri, authHandler);
 
         let projectId = task.getVariable('system.teamProjectId');
         let buildId: number = Number(task.getVariable('build.buildId'));
 
+        let buildApi: IBuildApi;
+        try{
+            buildApi = await connection.getBuildApi();
+        }
+        catch(err){
+            throw new Error('No build api');
+        }
 
-        let buildApi = await connection.getBuildApi();
-        let build = await buildApi.getBuild(buildId, projectId);
+        let build: Build;
+        try {
+            build = await buildApi.getBuild(buildId, projectId);
+        }
+        catch(err){
+            throw new Error('No build');
+        }
 
         let poolId = build.queue.pool.id;
 
         let agentId = Number(task.getVariable('agent.id'));
 
-        let agentApi = await connection.getTaskAgentApi();
-        let agent = await agentApi.getAgent(poolId, agentId, true);
+        let agentApi: ITaskAgentApi;
+        try{
+            agentApi = await connection.getTaskAgentApi();
+        }
+        catch(err){
+            throw new Error('No agent api');
+        }
+
+        let agent: TaskAgent;
+        try{
+            agent = await agentApi.getAgent(poolId, agentId, true);
+        }
+        catch(err){
+            throw new Error('No agent');
+        }
+        
         let keys = Object.keys(agent.systemCapabilities);
 
         for (let key of keys) {
