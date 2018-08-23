@@ -25,19 +25,22 @@ async function run() {
 
         let baseUri = task.getVariable('system.teamFoundationServerUri');
         let projectId = task.getVariable('system.teamProjectId');
-        let definitionId = task.getVariable('system.definitionId');
+        //let definitionId = task.getVariable('system.definitionId');
+        let buildId = task.getVariable('B´build.buildId');
 
-        let definitionUri = `${baseUri}${projectId}/_apis/build/definitions/${definitionId}`;
-        task.debug(`definitionUri=${definitionUri}`);
+        //let definitionUri = `${baseUri}${projectId}/_apis/build/definitions/${definitionId}`;
+        let buildUri = `${baseUri}${projectId}/_apis/build/builds/${buildId}`;
+        //task.debug(`definitionUri=${definitionUri}`);
+        task.debug(`buildUri=${buildUri}`);
 
-        var definitionOptions = getRequestOptions(
+        var buildOptions = getRequestOptions(
             {
-                uri: definitionUri
+                uri: buildUri
             }
         );
 
-        let definitionResponse: any = await rpn(definitionOptions);
-        task.debug(JSON.stringify(definitionResponse.queue.pool));
+        let buildResponse: any = await rpn(buildOptions);
+        task.debug(JSON.stringify(buildResponse));
 
         task.setResult(task.TaskResult.Succeeded, 'Succeeded');
     }
