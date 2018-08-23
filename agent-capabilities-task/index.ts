@@ -26,7 +26,7 @@ async function run() {
         let baseUri = task.getVariable('system.teamFoundationServerUri');
         let projectId = task.getVariable('system.teamProjectId');
         //let definitionId = task.getVariable('system.definitionId');
-        let buildId = task.getVariable('B´build.buildId');
+        let buildId = task.getVariable('build.buildId');
 
         //let definitionUri = `${baseUri}${projectId}/_apis/build/definitions/${definitionId}`;
         let buildUri = `${baseUri}${projectId}/_apis/build/builds/${buildId}`;
