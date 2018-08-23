@@ -35,7 +35,7 @@ async function run() {
         console.log();
 
         for (let key of keys) {
-            let formattedKey = `AgentCapability.${key}`;
+            let formattedKey = `AgentCapabilities.${key}`;
             let value = systemCapabilities[key];
             task.setVariable(formattedKey, value);
             console.log(`${formattedKey}=${value}`);
