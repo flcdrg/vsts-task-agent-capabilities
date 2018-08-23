@@ -49,7 +49,8 @@ async function run() {
 
 
         // ideally from config
-        let token = task.getVariable('AgentCapabilitiesAccessToken');
+        //let token = task.getVariable('AgentCapabilitiesAccessToken');
+        let token = task.getVariable('System.AccessToken');
 
         let authHandler = vsts.getPersonalAccessTokenHandler(token);
         let connection = new vsts.WebApi(collectionUri, authHandler);
