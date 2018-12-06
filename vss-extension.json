@@ -11,7 +11,7 @@
     ],
     "description": "Exposes agent capabilities as variables in your pipeline. Use them just like any other variable in subsequent tasks.",
     "categories": [
-        "Build and release"
+        "Azure Pipelines"
     ],
     "tags": [
         "Build task", "Build", "Continuous Integration", "Pipeline", "Agent", "Capabilities", "Variables"
