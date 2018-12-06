@@ -1,4 +1,4 @@
-import task = require('vsts-task-lib/task');
+import task = require('azure-pipelines-task-lib/task');
 import * as vsts from 'vso-node-api';
 
 async function run() {
